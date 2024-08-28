@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import zerobase.weather.service.DiaryService;
 
+import java.net.MalformedURLException;
 import java.time.LocalDate;
 
 @RestController
@@ -16,7 +17,7 @@ public class DiaryController {
     }
 
     @PostMapping("/create/diary")
-    void createDiary(@RequestParam @DateTimeFormat(iso= DateTimeFormat.ISO.DATE) LocalDate date, @RequestBody String text){
+    void createDiary(@RequestParam @DateTimeFormat(iso= DateTimeFormat.ISO.DATE) LocalDate date, @RequestBody String text) throws MalformedURLException {
         diaryService.createDiary(date, text);
 
     }
